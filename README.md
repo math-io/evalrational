@@ -7,7 +7,7 @@ evalrational
 A rational function is `f(x)` is defined as
 
 <div class="equation" align="center" data-raw-text="f(x) = \frac{P(x)}{Q(x)}" data-equation="eq:rational_function">
-	<img src="" alt="Rational function definition.">
+	<img src="https://cdn.rawgit.com/math-io/evalrational/cfbe5ef7e1feb82405feb13e52c71c1b03ea25c4/docs/img/eqn.svg" alt="Rational function definition.">
 	<br>
 </div>
 
