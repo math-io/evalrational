@@ -1,0 +1,185 @@
+evalrational
+===
+[![NPM version][npm-image]][npm-url] [![Build Status][build-image]][build-url] [![Coverage Status][coverage-image]][coverage-url] [![Dependencies][dependencies-image]][dependencies-url]
+
+> Evaluates a [rational function][rational-function], i.e. the ratio of two [polynomials][polynomial].
+
+A rational function is `f(x)` is defined as
+
+<div class="equation" align="center" data-raw-text="f(x) = \frac{P(x)}{Q(x)}" data-equation="eq:rational_function">
+	<img src="" alt="Rational function definition.">
+	<br>
+</div>
+
+where both `P(x)` and `Q(x)` are polynomials in `x`.
+
+## Installation
+
+``` bash
+$ npm install math-evalrational
+```
+
+
+## Usage
+
+``` javascript
+var evalrational = require( 'math-evalrational' );
+```
+
+#### evalrational( num, denom, x )
+
+Evaluates a [rational function][rational-function] at a value `x`. The numerator coefficients `num` and the denominator coefficients `denom` are expected to be arrays of the same length, i.e.
+the polynomials are required to have the same degree.
+
+``` javascript
+var v = evalrational( [-6,-5], [3,0.5], 6 );
+// returns -6 => ( -6*6^0 - 5*6^1 ) / ( 3*6^0 + 0.5*6^1 )
+```
+
+__Note__: The coefficients should be ordered in __ascending__ degree.
+
+#### evalrational.factory( c )
+
+Uses code generation to in-line coefficients and return a reusable `function` for evaluating a a [rational function][rational-function].
+
+``` javascript
+var rational = evalrational.factory( [20,8,3], [10,9,1] );
+
+var v = rational( 10 );
+// returns 2 => (20*10^0 + 8*10^1 + 3*10^2) / (10*10^0 + 9*10^1 + 1*10^2)
+
+v = rational( 2 );
+// returns 1.5 => (20*2^0 + 8*2^1 + 3*2^2) / (10*2^0 + 9*2^1 + 1*2^2)
+```
+
+__Note__: For hot code paths in which coefficients are invariant, the generated `function` will be more performant than the main export.
+
+
+## Examples
+
+``` javascript
+var round = require( 'math-round' );
+var evalrational = require( 'math-evalrational' );
+
+var coef;
+var sign;
+var rational;
+var v;
+var i;
+
+// Create two arrays of random coefficients...
+num = new Float64Array( 10 );
+denom = new Float64Array( 10 );
+for ( i = 0; i < coef.length; i++ ) {
+	if ( Math.random() < 0.5 ) {
+		sign = -1;
+	} else {
+		sign = 1;
+	}
+	num[ i ] = sign * round( Math.random()*100 );
+	denom[ i ] = sign * round( Math.random()*100 );
+}
+
+// Evaluate the rational function at random values...
+for ( i = 0; i < 100; i++ ) {
+	v = Math.random() * 100;
+	console.log( 'f(%d) = %d', v, evalrational( num, denom, v ) );
+}
+
+// Generate an `evalrational` function...
+rational = evalrational.factory( num, denom );
+for ( i = 0; i < 100; i++ ) {
+	v = Math.random()*100 - 50;
+	console.log( 'f(%d) = %d', v, rational( v ) );
+}
+```
+
+To run the example code from the top-level application directory,
+
+``` bash
+$ node ./examples/index.js
+```
+
+
+---
+## Tests
+
+### Unit
+
+This repository uses [tape][tape] for unit tests. To run the tests, execute the following command in the top-level application directory:
+
+``` bash
+$ make test
+```
+
+All new feature development should have corresponding unit tests to validate correct functionality.
+
+
+### Test Coverage
+
+This repository uses [Istanbul][istanbul] as its code coverage tool. To generate a test coverage report, execute the following command in the top-level application directory:
+
+``` bash
+$ make test-cov
+```
+
+Istanbul creates a `./reports/coverage` directory. To access an HTML version of the report,
+
+``` bash
+$ make view-cov
+```
+
+
+### Browser Support
+
+This repository uses [Testling][testling] for browser testing. To run the tests in a (headless) local web browser, execute the following command in the top-level application directory:
+
+``` bash
+$ make test-browsers
+```
+
+To view the tests in a local web browser,
+
+``` bash
+$ make view-browser-tests
+```
+
+<!-- [![browser support][browsers-image]][browsers-url] -->
+
+
+---
+## License
+
+[MIT license](http://opensource.org/licenses/MIT).
+
+
+## Copyright
+
+Copyright &copy; 2016. The [Compute.io][compute-io] Authors..
+
+
+[npm-image]: http://img.shields.io/npm/v/math-evalrational.svg
+[npm-url]: https://npmjs.org/package/math-evalrational
+
+[build-image]: http://img.shields.io/travis/math-io/evalrational/master.svg
+[build-url]: https://travis-ci.org/math-io/evalrational
+
+[coverage-image]: https://img.shields.io/codecov/c/github/math-io/evalrational/master.svg
+[coverage-url]: https://codecov.io/github/math-io/evalrational?branch=master
+
+[dependencies-image]: http://img.shields.io/david/math-io/evalrational.svg
+[dependencies-url]: https://david-dm.org/math-io/evalrational
+
+[dev-dependencies-image]: http://img.shields.io/david/dev/math-io/evalrational.svg
+[dev-dependencies-url]: https://david-dm.org/dev/math-io/evalrational
+
+[github-issues-image]: http://img.shields.io/github/issues/math-io/evalrational.svg
+[github-issues-url]: https://github.com/math-io/evalrational/issues
+
+[tape]: https://github.com/substack/tape
+[istanbul]: https://github.com/gotwarlost/istanbul
+[testling]: https://ci.testling.com
+
+[polynomial]: https://en.wikipedia.org/wiki/Polynomial
+[compute-io]: https://github.com/compute-io
+[rational-function]: https://en.wikipedia.org/wiki/Rational_function
