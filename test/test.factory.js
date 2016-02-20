@@ -33,12 +33,13 @@ tape( 'if provided two empty coefficient arrays, the generated `evalrational` fu
 });
 
 tape( 'if provided only one coefficient for both arrays, the generated `evalrational` function always returns the ratio of the two coefficients', function test( t ) {
-	var evalpoly = factory( [2], [4] );
+	var evalrational;
 	var v;
 	var i;
 
+	evalrational = factory( [2], [4] );
 	for ( i = 0; i < 100; i++ ) {
-		v = evalpoly( i );
+		v = evalrational( i );
 		t.equal( v, 0.5, 'returns coefficient ratio' );
 	}
 	t.end();
