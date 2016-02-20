@@ -46,10 +46,12 @@ tape( 'if provided only one coefficient for both arrays, the generated `evalrati
 });
 
 tape( 'if the value at which to evaluate a rational function is `0`, the generated `evalrational` function returns the ratio of the first coefficients', function test( t ) {
-	var evalpoly = factory( [3,2,1], [0.5,2,1] );
+	var evalrational;
 	var v;
 
-	v = evalpoly( 0 );
+	evalrational = factory( [3,2,1], [0.5,2,1] );
+
+	v = evalrational( 0 );
 	t.equal( v, 6, 'returns coefficient ratio' );
 
 	t.end();
