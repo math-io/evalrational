@@ -28,7 +28,7 @@ var evalrational = require( 'math-evalrational' );
 
 #### evalrational( P, Q, x )
 
-Evaluates a [rational function][rational-function] at a value `x`. The numerator coefficients `P` and the denominator coefficients `Q` are expected to be arrays of the same length, i.e. the polynomials are required to have the same degree.
+Evaluates a [rational function][rational-function] at a value `x`. The coefficients `P` and `Q` are expected to be arrays of the same length.
 
 ``` javascript
 var P = [ -6, -5 ];
