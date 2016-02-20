@@ -31,7 +31,10 @@ var evalrational = require( 'math-evalrational' );
 Evaluates a [rational function][rational-function] at a value `x`. The numerator coefficients `P` and the denominator coefficients `Q` are expected to be arrays of the same length, i.e. the polynomials are required to have the same degree.
 
 ``` javascript
-var v = evalrational( [-6,-5], [3,0.5], 6 );
+var P = [ -6, -5 ];
+var Q = [ 3, 0.5 ];
+
+var v = evalrational( P, Q, 6 );
 // returns -6 => ( -6*6^0 - 5*6^1 ) / ( 3*6^0 + 0.5*6^1 )
 ```
 
@@ -61,35 +64,35 @@ var round = require( 'math-round' );
 var evalrational = require( 'math-evalrational' );
 
 var rational;
-var denom;
 var sign;
 var len;
-var num;
+var P;
+var Q;
 var v;
 var i;
 
 // Create two arrays of random coefficients...
 len = 10;
-num = new Float64Array( len );
-denom = new Float64Array( len );
+P = new Float64Array( len );
+Q = new Float64Array( len );
 for ( i = 0; i < len; i++ ) {
 	if ( Math.random() < 0.5 ) {
 		sign = -1;
 	} else {
 		sign = 1;
 	}
-	num[ i ] = sign * round( Math.random()*100 );
-	denom[ i ] = sign * round( Math.random()*100 );
+	P[ i ] = sign * round( Math.random()*100 );
+	Q[ i ] = sign * round( Math.random()*100 );
 }
 
 // Evaluate the rational function at random values...
 for ( i = 0; i < 100; i++ ) {
 	v = Math.random() * 100;
-	console.log( 'f(%d) = %d', v, evalrational( num, denom, v ) );
+	console.log( 'f(%d) = %d', v, evalrational( P, Q, v ) );
 }
 
 // Generate an `evalrational` function...
-rational = evalrational.factory( num, denom );
+rational = evalrational.factory( P, Q );
 for ( i = 0; i < 100; i++ ) {
 	v = Math.random()*100 - 50;
 	console.log( 'f(%d) = %d', v, rational( v ) );
