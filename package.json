@@ -50,7 +50,9 @@
   "bugs": {
     "url": "https://github.com/math-io/evalrational/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "math-abs": "^1.0.2"
+  },
   "devDependencies": {
     "browserify": "13.x.x",
     "codecov": "1.x.x",

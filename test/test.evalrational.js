@@ -64,5 +64,11 @@ tape( 'the function evaluates a rational function', function test( t ) {
 	v = evalrational( P, Q, 3 );
 	t.equal( v, 2, 'returns 2' );
 
+	// Large negative `x`:
+	P = [ 10, 2, 1 ];
+	Q = [ 1, 0, 0 ];
+	v = evalrational( P, Q, -1e306 );
+	t.equal( v, -1.2e307, 'returns -1.2e307' );
+
 	t.end();
 });
