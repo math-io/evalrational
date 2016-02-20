@@ -39,7 +39,20 @@ var v = evalrational( P, Q, 6 );
 // returns -6 => ( -6*6^0 - 5*6^1 ) / ( 3*6^0 + 0.5*6^1 ) = (-6-30)/(3+3)
 ```
 
-__Note__: The coefficients should be ordered in __ascending__ degree.
+Coefficients should be ordered in __ascending__ degree. For example, for a [polynomial][polynomial]
+
+<div class="equation" align="center" data-raw-text="c_nx^n + c_{n-1}x^{n-1} + \ldots + c_1x^1 + c_0 = \sum_{i=0}^{n} c_ix^i" data-equation="eq:polynomial">
+	<img src="" alt="Polynomial expression.">
+	<br>
+</div>
+
+the coefficients would be
+
+```
+[c_0, c_1, ..., c_(n-1), c_n]
+```
+
+matching the summation notation.
 
 
 #### evalrational.factory( P, Q )
