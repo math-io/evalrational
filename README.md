@@ -57,7 +57,7 @@ matching the summation notation.
 
 #### evalrational.factory( P, Q )
 
-Uses code generation to in-line coefficients and return a reusable `function` for evaluating a a [rational function][rational-function].
+Uses code generation to in-line coefficients and return a reusable `function` for evaluating a [rational function][rational-function].
 
 ``` javascript
 var P = [ 20, 8, 3 ];
