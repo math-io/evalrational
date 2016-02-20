@@ -9,7 +9,7 @@ var evalrational = require( './../lib/evalrational.js' );
 // TESTS //
 
 tape( 'main export is a function', function test( t ) {
-	t.ok( typeof evalrational === 'function', 'main export is a function' );
+	t.equal( typeof evalrational, 'function', 'main export is a function' );
 	t.end();
 });
 
