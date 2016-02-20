@@ -39,6 +39,19 @@ var v = evalrational( P, Q, 6 );
 // returns -6 => ( -6*6^0 - 5*6^1 ) / ( 3*6^0 + 0.5*6^1 ) = (-6-30)/(3+3)
 ```
 
+For polynomials of different degree, the coefficient array for the lower degree [polynomial][polynomial] should be padded with zeros.
+
+``` javascript
+// 2x^3 + 4x^2 - 5x^1 - 6x^0 => degree 4
+var P = [ -6, -5, 4, 2 ];
+
+// 0.5x^1 + 3x^0 => degree 2
+var Q = [ 3, 0.5, 0, 0 ]; // zero-padded
+
+var v = evalrational( P, Q, 6 );
+// returns 74 => ( -6*6^0 - 5*6^1 + 4*6^2 + 2*6^3 ) / ( 3*6^0 + 0.5*6^1 ) = (-6-30+48+432)/(3+3)
+```
+
 Coefficients should be ordered in __ascending__ degree. For example, for a [polynomial][polynomial]
 
 <div class="equation" align="center" data-raw-text="c_nx^n + c_{n-1}x^{n-1} + \ldots + c_1x^1 + c_0 = \sum_{i=0}^{n} c_ix^i" data-equation="eq:polynomial">
