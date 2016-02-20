@@ -69,5 +69,8 @@ tape( 'the generated `evalrational` function evaluates a rational function', fun
 	v = evalrational( 2 );
 	t.equal( v, -4, 'returns -4' );
 
+	v = evalrational( 0.5 ); // -8.5 / 3.25
+	t.equal( v, -2.6153846153846154, 'returns -2.6153846153846154' );
+
 	t.end();
 });
