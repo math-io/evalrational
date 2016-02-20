@@ -48,7 +48,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "browserify": "12.x.x",
+    "browserify": "13.x.x",
     "codecov": "1.x.x",
     "istanbul": "^0.4.1",
     "jshint": "2.x.x",
