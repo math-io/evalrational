@@ -9,7 +9,6 @@ var evalrational = require( './../lib' );
 // TESTS //
 
 tape( 'main export is a function', function test( t ) {
-	console.log( typeof evalrational === 'function' )
 	t.ok( typeof evalrational === 'function', 'main export is a function' );
 	t.end();
 });
