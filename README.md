@@ -42,7 +42,7 @@ var v = evalrational( P, Q, 6 );
 Coefficients should be ordered in __ascending__ degree. For example, for a [polynomial][polynomial]
 
 <div class="equation" align="center" data-raw-text="c_nx^n + c_{n-1}x^{n-1} + \ldots + c_1x^1 + c_0 = \sum_{i=0}^{n} c_ix^i" data-equation="eq:polynomial">
-	<img src="" alt="Polynomial expression.">
+	<img src="https://cdn.rawgit.com/math-io/evalrational/5a32486a004f818897cb634cacb9186cfa9148b0/docs/img/coef.svg" alt="Polynomial expression.">
 	<br>
 </div>
 
