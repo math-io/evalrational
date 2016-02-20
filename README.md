@@ -26,10 +26,9 @@ $ npm install math-evalrational
 var evalrational = require( 'math-evalrational' );
 ```
 
-#### evalrational( num, denom, x )
+#### evalrational( P, Q, x )
 
-Evaluates a [rational function][rational-function] at a value `x`. The numerator coefficients `num` and the denominator coefficients `denom` are expected to be arrays of the same length, i.e.
-the polynomials are required to have the same degree.
+Evaluates a [rational function][rational-function] at a value `x`. The numerator coefficients `P` and the denominator coefficients `Q` are expected to be arrays of the same length, i.e. the polynomials are required to have the same degree.
 
 ``` javascript
 var v = evalrational( [-6,-5], [3,0.5], 6 );
