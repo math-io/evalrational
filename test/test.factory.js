@@ -14,18 +14,19 @@ tape( 'main export is a function', function test( t ) {
 });
 
 tape( 'the function returns a function', function test( t ) {
-	var evalpoly = factory( [1,2,3], [1,2,3] );
-	t.ok( typeof evalpoly === 'function', 'returns a function' );
+	var evalrational = factory( [1,2,3], [1,2,3] );
+	t.equal( typeof evalrational, 'function', 'returns a function' );
 	t.end();
 });
 
 tape( 'if provided two empty coefficient arrays, the generated `evalrational` function always returns `NaN`', function test( t ) {
-	var evalpoly = factory( [] );
+	var evalrational;
 	var v;
 	var i;
 
+	evalrational = factory( [], [] );
 	for ( i = 0; i < 100; i++ ) {
-		v = evalpoly( i );
+		v = evalrational( i );
 		t.ok( v !== v, 'returns NaN' );
 	}
 	t.end();
