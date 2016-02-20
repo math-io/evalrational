@@ -35,10 +35,11 @@ var P = [ -6, -5 ];
 var Q = [ 3, 0.5 ];
 
 var v = evalrational( P, Q, 6 );
-// returns -6 => ( -6*6^0 - 5*6^1 ) / ( 3*6^0 + 0.5*6^1 )
+// returns -6 => ( -6*6^0 - 5*6^1 ) / ( 3*6^0 + 0.5*6^1 ) = (-6-30)/(3+3)
 ```
 
 __Note__: The coefficients should be ordered in __ascending__ degree.
+
 
 #### evalrational.factory( P, Q )
 
@@ -51,10 +52,10 @@ var Q = [ 10, 9, 1 ];
 var rational = evalrational.factory( P, Q );
 
 var v = rational( 10 );
-// returns 2 => (20*10^0 + 8*10^1 + 3*10^2) / (10*10^0 + 9*10^1 + 1*10^2)
+// returns 2 => (20*10^0 + 8*10^1 + 3*10^2) / (10*10^0 + 9*10^1 + 1*10^2) = (20+80+300)/(10+90+100)
 
 v = rational( 2 );
-// returns 1.5 => (20*2^0 + 8*2^1 + 3*2^2) / (10*2^0 + 9*2^1 + 1*2^2)
+// returns 1.5 => (20*2^0 + 8*2^1 + 3*2^2) / (10*2^0 + 9*2^1 + 1*2^2) = (20+16+12)/(10+18+4)
 ```
 
 __Note__: For hot code paths in which coefficients are invariant, the generated `function` will be more performant than the main export.
