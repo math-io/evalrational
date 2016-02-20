@@ -40,12 +40,15 @@ var v = evalrational( P, Q, 6 );
 
 __Note__: The coefficients should be ordered in __ascending__ degree.
 
-#### evalrational.factory( c )
+#### evalrational.factory( P, Q )
 
 Uses code generation to in-line coefficients and return a reusable `function` for evaluating a a [rational function][rational-function].
 
 ``` javascript
-var rational = evalrational.factory( [20,8,3], [10,9,1] );
+var P = [ 20, 8, 3 ];
+var Q = [ 10, 9, 1 ];
+
+var rational = evalrational.factory( P, Q );
 
 var v = rational( 10 );
 // returns 2 => (20*10^0 + 8*10^1 + 3*10^2) / (10*10^0 + 9*10^1 + 1*10^2)
