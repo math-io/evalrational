@@ -49,7 +49,7 @@ var P = [ -6, -5, 4, 2 ];
 var Q = [ 3, 0.5, 0, 0 ]; // zero-padded
 
 var v = evalrational( P, Q, 6 );
-// returns 74 => ( -6*6^0 - 5*6^1 + 4*6^2 + 2*6^3 ) / ( 3*6^0 + 0.5*6^1 ) = (-6-30+48+432)/(3+3)
+// returns 90 => ( -6*6^0 - 5*6^1 + 4*6^2 + 2*6^3 ) / ( 3*6^0 + 0.5*6^1 + 0*6^2 + 0*6^3 ) = (-6-30+144+432)/(3+3)
 ```
 
 Coefficients should be ordered in __ascending__ degree. For example, for a [polynomial][polynomial]
