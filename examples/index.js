@@ -3,11 +3,11 @@
 var round = require( 'math-round' );
 var evalrational = require( './../lib' );
 
-var len;
-var num;
+var rational;
 var denom;
 var sign;
-var rational;
+var len;
+var num;
 var v;
 var i;
 
