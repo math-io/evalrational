@@ -61,16 +61,19 @@ __Note__: For hot code paths in which coefficients are invariant, the generated 
 var round = require( 'math-round' );
 var evalrational = require( 'math-evalrational' );
 
-var coef;
-var sign;
 var rational;
+var denom;
+var sign;
+var len;
+var num;
 var v;
 var i;
 
 // Create two arrays of random coefficients...
-num = new Float64Array( 10 );
-denom = new Float64Array( 10 );
-for ( i = 0; i < coef.length; i++ ) {
+len = 10;
+num = new Float64Array( len );
+denom = new Float64Array( len );
+for ( i = 0; i < len; i++ ) {
 	if ( Math.random() < 0.5 ) {
 		sign = -1;
 	} else {
