@@ -32,6 +32,22 @@ tape( 'if provided two empty coefficient arrays, the generated `evalrational` fu
 	t.end();
 });
 
+
+tape( 'if provided coefficient arrays of different lengths, the generated `evalrational` function always returns `NaN`', function test( t ) {
+	var evalrational1 = factory( [ 2, 1, 2 ], [ 3, 1 ] );
+	var evalrational2 = factory( [ 0.5, 2 ], [ 2, 3, 1 ] );
+	var v;
+	var i;
+
+	for ( i = 0; i < 100; i++ ) {
+		v = evalrational1( i );
+		t.ok( v !== v, 'returns NaN' );
+		v = evalrational2( i );
+		t.ok( v !== v, 'returns NaN' );
+	}
+	t.end();
+});
+
 tape( 'if provided only one coefficient for both arrays, the generated `evalrational` function always returns the ratio of the two coefficients', function test( t ) {
 	var evalrational;
 	var v;

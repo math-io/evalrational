@@ -35,6 +35,19 @@ tape( 'if provided only one coefficient for both arrays, the function always ret
 	t.end();
 });
 
+tape( 'if provided coefficient arrays of different lengths, the function always returns `NaN`', function test( t ) {
+	var v;
+	var i;
+
+	for ( i = 0; i < 100; i++ ) {
+		v = evalrational( [ 2, 1, 2 ], [ 3, 1 ], i );
+		t.ok( v !== v, 'returns NaN' );
+		v = evalrational( [ 0.5, 2 ], [ 2, 3, 1 ], i );
+		t.ok( v !== v, 'returns NaN' );
+	}
+	t.end();
+});
+
 tape( 'if the value at which to evaluate a rational function is `0`, the function returns the ratio of the first coefficients', function test( t ) {
 	var v;
 
@@ -62,6 +75,11 @@ tape( 'the function evaluates a rational function', function test( t ) {
 	P = [ -19, 7, -4, 6 ];
 	Q = [ 4, 5, 2, 1 ];
 	v = evalrational( P, Q, 3 );
+	t.equal( v, 2, 'returns 2' );
+
+	P = [ 4, 2, 1 ];
+	Q = [ 2, 0, 0 ];
+	v = evalrational( P, Q, -2 );
 	t.equal( v, 2, 'returns 2' );
 
 	t.end();
